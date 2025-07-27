@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tea Plucker Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 text-gray-800 font-sans">
+  <!-- Header -->
+  <header class="bg-green-700 text-white py-4 px-6 shadow-md">
+    <div class="flex justify-between items-center">
+      <h1 class="text-xl font-semibold">🍃 Tea Plucker Dashboard</h1>
+      <span class="text-sm">Logged in as: <strong>Plucker A</strong></span>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
+    <!-- Plucking Form -->
+    <h2 class="text-lg font-semibold mb-4">🌿 Daily Plucking Entry</h2>
+    <form id="plucking-form" class="space-y-4">
+      <div>
+        <label for="plucked-date" class="block font-medium">Date</label>
+        <input type="text" id="plucked-date" readonly class="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"/>
+      </div>
+      <div>
+        <label for="plucked-amount" class="block font-medium">Amount Plucked (kg)</label>
+        <input type="number" id="plucked-amount" placeholder="e.g., 12.5" min="0" step="0.1"
+               class="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-green-500"/>
+      </div>
+      <div class="text-right">
+        <button type="submit"
+                class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md transition">Submit</button>
+      </div>
+      <p id="success-message" class="hidden text-green-700 text-sm mt-2">✅ Plucking data submitted!</p>
+    </form>
+
+    <!-- Announcements -->
+    <div class="mt-8">
+      <h3 class="text-md font-semibold mb-2">🔔 Announcements</h3>
+      <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+        <li>Pluck from Zone B today – more leaves available.</li>
+        <li>Weekly meeting tomorrow at 8 AM.</li>
+      </ul>
+    </div>
+
+    <!-- Collection Schedule -->
+    <div class="mt-6 border-t pt-4 text-sm text-gray-600">
+      🚛 <strong>Today's Collection Time:</strong> 3:00 PM
+    </div>
+  </main>
+
+  <script>
+    // Set current date
+    document.getElementById("plucked-date").value = new Date().toISOString().split("T")[0];
+
+    // Fake success feedback
+    document.getElementById("plucking-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("success-message").classList.remove("hidden");
+      setTimeout(() => {
+        document.getElementById("success-message").classList.add("hidden");
+        document.getElementById("plucked-amount").value = "";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
