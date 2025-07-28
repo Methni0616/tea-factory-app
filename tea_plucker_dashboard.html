@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>🌿 Tea Plucker Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>🌿 Tea Plucker Entry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -23,8 +23,8 @@
       background-color: white;
       padding: 30px 40px;
       border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      width: 350px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 360px;
     }
 
     .form-container h2 {
@@ -39,6 +39,7 @@
       margin: 10px 0 5px;
     }
 
+    input[type="text"],
     input[type="date"],
     input[type="number"] {
       width: 100%;
@@ -49,10 +50,11 @@
       transition: 0.3s;
     }
 
+    input[type="text"]:focus,
     input[type="date"]:focus,
     input[type="number"]:focus {
       border-color: #45b649;
-      box-shadow: 0 0 5px rgba(69,182,73,0.4);
+      box-shadow: 0 0 5px rgba(69, 182, 73, 0.4);
     }
 
     input[type="submit"] {
@@ -83,15 +85,18 @@
 <body>
 
   <div class="form-container">
-    <h2>🌿 Tea Plucker Daily Entry</h2>
+    <h2>🌿 Tea Plucker Entry</h2>
     <form action="submit_plucking.php" method="POST">
+      <label for="plucker_id">Plucker ID:</label>
+      <input type="text" id="plucker_id" name="plucker_id" placeholder="Enter your ID" required />
+
       <label for="date">Date:</label>
-      <input type="date" id="date" name="date" required>
+      <input type="date" id="date" name="date" required />
 
       <label for="amount">Amount Plucked (kg):</label>
-      <input type="number" id="amount" name="amount" step="0.1" required>
+      <input type="number" id="amount" name="amount" step="0.1" min="0" placeholder="e.g. 12.5" required />
 
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" />
     </form>
     <div class="footer-note">Powered by TeaConnect © 2025</div>
   </div>
