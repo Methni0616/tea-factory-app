@@ -3,90 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Settings - Tea Factory App</title>
+  <title>Advanced Settings - Tea Factory App</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: #f0f2f5;
     }
 
-    .settings-container {
-      background-color: #fff;
+    .settings-wrapper {
+      max-width: 950px;
+      margin: 40px auto;
+      background: #ffffff;
       padding: 2rem;
       border-radius: 15px;
-      max-width: 800px;
-      margin: 2rem auto;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
 
-    .section-title {
-      color: #198754;
-      margin-bottom: 10px;
-      border-bottom: 2px solid #198754;
-      padding-bottom: 5px;
-    }
-
-    .btn-custom {
+    .nav-tabs .nav-link.active {
       background-color: #198754;
+      color: white;
       border: none;
-      color: #fff;
     }
 
-    .btn-custom:hover {
+    .nav-tabs .nav-link {
+      color: #198754;
+      border: 1px solid #198754;
+      margin-right: 10px;
+    }
+
+    .form-control, .form-check-input {
+      border-radius: 8px;
+    }
+
+    .section-header {
+      color: #198754;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .save-btn {
+      background-color: #198754;
+      color: white;
+      border: none;
+    }
+
+    .save-btn:hover {
       background-color: #157347;
+    }
+
+    .form-icon {
+      margin-right: 8px;
+      color: #198754;
     }
   </style>
 </head>
 <body>
-  <div class="settings-container">
-    <h2 class="text-center text-success mb-4">⚙️ Settings</h2>
 
-    <!-- Account Info -->
-    <div class="mb-4">
-      <h5 class="section-title">👤 Account Information</h5>
-      <div class="mb-3">
-        <label class="form-label">Name</label>
-        <input type="text" class="form-control" placeholder="Enter your name" />
+  <div class="settings-wrapper">
+    <h3 class="text-center text-success mb-4"><i class="fas fa-cog"></i> Advanced Settings</h3>
+
+    <ul class="nav nav-tabs mb-4" id="settingsTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button">👤 Profile</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="notifications-tab" data-bs-toggle="tab" data-bs-target="#notifications" type="button">🔔 Notifications</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="appearance-tab" data-bs-toggle="tab" data-bs-target="#appearance" type="button">🎨 Appearance</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="settingsTabsContent">
+      <!-- Profile Tab -->
+      <div class="tab-pane fade show active" id="profile" role="tabpanel">
+        <h5 class="section-header"><i class="fas fa-user-circle form-icon"></i>Account Information</h5>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="John Doe">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" placeholder="john@example.com">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" placeholder="+94-712345678">
+          </div>
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" placeholder="Enter your email" />
+
+      <!-- Notifications Tab -->
+      <div class="tab-pane fade" id="notifications" role="tabpanel">
+        <h5 class="section-header"><i class="fas fa-bell form-icon"></i>Notifications</h5>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="emailAlerts" checked>
+          <label class="form-check-label" for="emailAlerts">Email Alerts</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="smsAlerts">
+          <label class="form-check-label" for="smsAlerts">SMS Alerts</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="pushAlerts" checked>
+          <label class="form-check-label" for="pushAlerts">Push Notifications</label>
+        </div>
+      </div>
+
+      <!-- Appearance Tab -->
+      <div class="tab-pane fade" id="appearance" role="tabpanel">
+        <h5 class="section-header"><i class="fas fa-palette form-icon"></i>Display Preferences</h5>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="theme" id="lightTheme" checked>
+          <label class="form-check-label" for="lightTheme">Light Theme</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="theme" id="darkTheme">
+          <label class="form-check-label" for="darkTheme">Dark Theme</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="theme" id="systemDefault">
+          <label class="form-check-label" for="systemDefault">System Default</label>
+        </div>
       </div>
     </div>
 
-    <!-- Notification Settings -->
-    <div class="mb-4">
-      <h5 class="section-title">🔔 Notifications</h5>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="emailAlerts" checked />
-        <label class="form-check-label" for="emailAlerts">Enable Email Alerts</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="smsAlerts" />
-        <label class="form-check-label" for="smsAlerts">Enable SMS Notifications</label>
-      </div>
-    </div>
-
-    <!-- Theme Settings -->
-    <div class="mb-4">
-      <h5 class="section-title">🎨 Display Preferences</h5>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="theme" id="lightTheme" />
-        <label class="form-check-label" for="lightTheme">Light Theme</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="theme" id="darkTheme" checked />
-        <label class="form-check-label" for="darkTheme">Dark Theme</label>
-      </div>
-    </div>
-
-    <!-- Submit Button -->
-    <div class="text-center">
-      <button class="btn btn-custom px-4">Save Changes</button>
+    <div class="text-center mt-4">
+      <button class="btn save-btn px-5 py-2"><i class="fas fa-save me-2"></i>Save Changes</button>
     </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
