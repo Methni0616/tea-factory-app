@@ -47,7 +47,7 @@ if (isset($_POST['plucker_id'], $_POST['date'], $_POST['amount'])) {
 
     $stmt->close();
 } else {
-    echo "<h2>⚠️ Missing form data.</h2>";
+    echo "<h2>⚠️ Missing Form Data.</h2>";
 }
 
 $conn->close();
