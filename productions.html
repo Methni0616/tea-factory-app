@@ -2,196 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tea Factory – Productions Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Production Dashboard</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
     body {
-      margin: 0;
-      background-color: #f4f6f9;
-      display: flex;
-      min-height: 100vh;
-      overflow-x: hidden;
+      background-color: #f4f6f8;
+      font-family: 'Segoe UI', sans-serif;
     }
-
-    /* Sidebar */
-    .sidebar {
-      width: 220px;
-      background: #0d6efd;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-    }
-
-    .sidebar h2 {
-      font-size: 22px;
-      margin-bottom: 30px;
-    }
-
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      margin-bottom: 15px;
-      font-size: 16px;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-      text-decoration: underline;
-      transform: translateX(5px);
-    }
-
-    /* Main content */
-    .main {
-      flex: 1;
-      padding: 30px;
-    }
-
-    .header {
-      font-size: 28px;
-      font-weight: 600;
-      margin-bottom: 30px;
-      color: #333;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
+    .dashboard-card {
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
     }
-
-    .card:hover {
+    .dashboard-card:hover {
       transform: translateY(-5px);
     }
-
-    .card h4 {
-      font-size: 16px;
-      color: #777;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 24px;
-      color: #0d6efd;
-      font-weight: bold;
-    }
-
-    .chart-container {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-
-    .chart-container h4 {
-      margin-bottom: 20px;
-      color: #444;
-    }
-
-    canvas {
-      max-width: 100%;
-    }
-
-    @media (max-width: 768px) {
-      .sidebar {
-        display: none;
-      }
-
-      .main {
-        padding: 20px;
-      }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
+  <div class="container-fluid py-4">
+    <h2 class="mb-4">Production Dashboard</h2>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h2>TeaFactory</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Collections</a>
-    <a href="#">Pluckers</a>
-    <a href="#">Alerts</a>
-    <a href="#">Settings</a>
-  </div>
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4">
+        <div class="card dashboard-card p-3">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-cpu fs-1 text-success me-3"></i>
+            <div>
+              <h5 class="card-title">Current Batch</h5>
+              <p class="mb-1">Batch #102</p>
+              <small class="text-muted">Started at 10:45 AM</small>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <!-- Main Content -->
-  <div class="main">
-    <div class="header">Productions Dashboard</div>
+      <div class="col-lg-4">
+        <div class="card dashboard-card p-3">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-clock-history fs-1 text-warning me-3"></i>
+            <div>
+              <h5 class="card-title">Processing Time</h5>
+              <p class="mb-1">3 hrs 25 min</p>
+              <small class="text-muted">Average duration: 4 hrs</small>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <!-- Stat Cards -->
-    <div class="cards">
-      <div class="card">
-        <h4>Today's Yield</h4>
-        <p>1,250 kg</p>
-      </div>
-      <div class="card">
-        <h4>Pending Collections</h4>
-        <p>320 kg</p>
-      </div>
-      <div class="card">
-        <h4>Total This Month</h4>
-        <p>18,750 kg</p>
-      </div>
-      <div class="card">
-        <h4>Downtime (hrs)</h4>
-        <p>1.5 hrs</p>
+      <div class="col-lg-4">
+        <div class="card dashboard-card p-3">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-bar-chart-line fs-1 text-primary me-3"></i>
+            <div>
+              <h5 class="card-title">Output Rate</h5>
+              <p class="mb-1">450 kg/hr</p>
+              <small class="text-muted">Updated 10 mins ago</small>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Chart Section -->
-    <div class="chart-container">
-      <h4>Weekly Production Trends</h4>
-      <canvas id="productionChart"></canvas>
+    <div class="card p-4">
+      <h5 class="mb-3">Production Batches Overview</h5>
+      <table class="table table-hover">
+        <thead class="table-success">
+          <tr>
+            <th>Batch ID</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Status</th>
+            <th>Output (kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#100</td>
+            <td>08:00 AM</td>
+            <td>12:00 PM</td>
+            <td><span class="badge bg-success">Completed</span></td>
+            <td>1800</td>
+          </tr>
+          <tr>
+            <td>#101</td>
+            <td>12:15 PM</td>
+            <td>–</td>
+            <td><span class="badge bg-warning text-dark">In Progress</span></td>
+            <td>–</td>
+          </tr>
+          <tr>
+            <td>#99</td>
+            <td>04:00 AM</td>
+            <td>07:45 AM</td>
+            <td><span class="badge bg-danger">Interrupted</span></td>
+            <td>1350</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <!-- Chart.js Script -->
-  <script>
-    const ctx = document.getElementById('productionChart').getContext('2d');
-    const productionChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        datasets: [{
-          label: 'Production (kg)',
-          data: [400, 520, 480, 620, 500, 700, 650],
-          backgroundColor: 'rgba(13, 110, 253, 0.1)',
-          borderColor: '#0d6efd',
-          borderWidth: 2,
-          tension: 0.4,
-          fill: true,
-          pointRadius: 5,
-          pointBackgroundColor: '#0d6efd'
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
-
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
