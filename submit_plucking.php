@@ -37,7 +37,7 @@ if (isset($_POST['plucker_id'], $_POST['date'], $_POST['amount'])) {
 
     if ($stmt->execute()) {
         if ($stmt->affected_rows > 0) {
-            echo "<h2>✅ Data inserted successfully ! </h2>";
+            echo "<h2>✅ Data inserted successfully! </h2>";
         } else {
             echo "<h2>❌ No rows inserted.</h2>";
         }
